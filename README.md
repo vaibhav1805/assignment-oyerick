@@ -23,7 +23,7 @@ On clicking **Connect** button, you will **start recieving real time location of
 # Overall Architecture
 The web controller consists of two parts
 - REST API 
-- Websocket: To push locations of all drivers every 5s.
+- Websocket: To push locations of all drivers every 1s.
 
 Database stores one table called  **drivers**, which stores following attributes
 * driverId
