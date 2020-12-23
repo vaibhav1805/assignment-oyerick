@@ -25,6 +25,15 @@
             ws.connect({}, function(frame) {
                 ws.subscribe("/topic/updates", function(message) {
                     console.log(message.body);
+                    var now = new Date();
+                    var drivers = JSON.parse(message.body);
+                    var text = "";
+                    for (var i = 0; i < drivers.length; i++) {
+                        text += drivers[i].name + " " + drivers[i].latitude + " " + drivers[i].longitude + '\n';
+                    }
+
+                    document.getElementById('timestamp').innerText = now;
+                    document.getElementById('drivers').innerText = text;
                 });
 
             }, function(error) {
@@ -54,6 +63,11 @@
     <div>
         <button id="connect" onclick="connect();">Connect</button>
         <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+    </div>
+    <div id="timestamp"></div>
+    <br>
+    <div id="drivers">
+
     </div>
 </div>
 

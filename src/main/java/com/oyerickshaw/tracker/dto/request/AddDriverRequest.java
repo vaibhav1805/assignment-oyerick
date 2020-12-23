@@ -6,6 +6,7 @@ import java.math.BigDecimal;
 
 @Data
 public class AddDriverRequest {
+    private String driverId;
     private String name;
     private BigDecimal latitude;
     private BigDecimal longitude;

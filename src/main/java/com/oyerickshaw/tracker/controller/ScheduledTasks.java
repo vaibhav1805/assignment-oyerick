@@ -15,7 +15,10 @@ public class ScheduledTasks {
     @Autowired
     private TrackerService trackerService;
 
-    @Scheduled(fixedRate = 5000)
+    /**
+     * Push All driver locations every 1s
+     */
+    @Scheduled(fixedRate = 1000)
     public void fireUpdate() {
         this.template.convertAndSend("/topic/updates", trackerService.getAllDrivers());
     }
