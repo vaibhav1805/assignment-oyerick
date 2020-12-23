@@ -20,6 +20,9 @@ After running, app will be available at http://localhost:8080
 
 On clicking **Connect** button, you will **start recieving real time location of drivers** on web page at  http://localhost:8080
 
+To Find drivers in radius of 'r' say 200m use below API -
+**GET 'http://localhost:8080/driver/find/range?radius=100&latitude=0.00&longitude=0.00'**
+
 # Overall Architecture
 The web controller consists of two parts
 - REST API 
@@ -35,11 +38,11 @@ REST APIs enable creating/updating/reading drivers.
 For find drivers within radius 'r' application uses MySql's  **ST_Distance_Sphere** which is offered as Spatial Convenience Function from MySql 5.7
 
 Websocket provides a channel called  **/topic/updates** to which as WS client can subscribe. App has a scheduler which pushes 
-location of drivers to the channel every 5s.
+location of drivers to the channel every 1s.
 
 
 # Code Structure
-* controller - Code REST APIs exposed, defining request, response of APIs. ScheduledTasks.java is a scheduler to push all driver locations every 5s.
+* controller - Code REST APIs exposed, defining request, response of APIs. ScheduledTasks.java is a scheduler to push all driver locations every 1s.
 * service - Conatains business logic. TrackerService.java has business logic & db interactions.
 * repository - Interface that actually interacts with DB calls via JPA.
 * entity - Java classes that map to database objects.
