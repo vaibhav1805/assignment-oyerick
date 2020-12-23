@@ -1,0 +1,61 @@
+<html>
+<head>
+    <title>Driver Updates</title>
+
+    <script src="js/sockjs-0.3.4.js"></script>
+    <script src="js/stomp.js"></script>
+
+    <script type="text/javascript">
+
+        var stompClient = null;
+
+        function setConnected(connected) {
+
+            document.getElementById('connect').disabled = connected;
+            document.getElementById('disconnect').disabled = !connected;
+            document.getElementById('conversationDiv').style.visibility = connected ? 'visible' : 'hidden';
+            document.getElementById('response').innerHTML = '';
+        }
+
+
+        function connect() {
+            var socket = new WebSocket('ws://localhost:8080/channel/websocket');
+            ws = Stomp.over(socket);
+
+            ws.connect({}, function(frame) {
+                ws.subscribe("/topic/updates", function(message) {
+                    console.log(message.body);
+                });
+
+            }, function(error) {
+                alert("STOMP error " + error);
+            });
+        }
+
+
+        function disconnect() {
+
+            if(stompClient != null) {
+                stompClient.disconnect();
+            }
+
+            setConnected(false);
+            console.log("Disconnected");
+        }
+
+
+    </script>
+
+</head>
+
+<body onload="disconnect()">
+
+<div>
+    <div>
+        <button id="connect" onclick="connect();">Connect</button>
+        <button id="disconnect" disabled="disabled" onclick="disconnect();">Disconnect</button>
+    </div>
+</div>
+
+</body>
+</html>
