@@ -23,6 +23,9 @@ On clicking **Connect** button, you will **start recieving real time location of
 To Find drivers in radius of 'r' say 200m use API -
 *GET 'http://localhost:8080/driver/find/range?radius=100&latitude=0.00&longitude=0.00'
 
+**Web Page Snippet Post Websocket connection**
+![alt text](https://res.cloudinary.com/camtroop/image/upload/v1608699716/Screenshot_2020-12-23_at_10.30.42_AM_lqta9m.png)
+
 # Overall Architecture
 The web controller consists of two parts
 - REST API 
