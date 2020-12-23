@@ -20,8 +20,8 @@ After running, app will be available at http://localhost:8080
 
 On clicking **Connect** button, you will **start recieving real time location of drivers** on web page at  http://localhost:8080
 
-To Find drivers in radius of 'r' say 200m use below API -
-**GET 'http://localhost:8080/driver/find/range?radius=100&latitude=0.00&longitude=0.00'**
+To Find drivers in radius of 'r' say 200m use API -
+*GET 'http://localhost:8080/driver/find/range?radius=100&latitude=0.00&longitude=0.00'
 
 # Overall Architecture
 The web controller consists of two parts
